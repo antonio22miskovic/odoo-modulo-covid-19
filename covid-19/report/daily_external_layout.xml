@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<report 
+			id="report_dailyReportExternalayout"
+			model="covid.covid_19"
+			string="Daily External Report"
+			report_type="qweb-pdf"
+			name="covid-19.dailyReportExternalayout"
+			menu="True"
+			print_report_name="'Report %s %s of the covid-19' % (object.datetime, object.country_id.name)"/>
+
+			<template id="dailyReportExternalayout">
+				<t t-call="web.html_container">
+					<t t-foreach="docs" t-as="o">
+						<t t-call="web.external_layout">
+							<div class="page" style="font-size:18px">
+								<div class="row">
+									<div class="col-md-12" aling="center">
+										<h2> Reporte COVID-19  <span t-field="o.datetime"/> </h2>
+										<h4>Versión Registro Manual</h4>
+										<h5> Fuente <span t-field="o.source"/> </h5>
+										<h5> Pais <span t-field="o.country_id"/> </h5>
+									</div>
+								</div>
+								<div class="row mt8">
+									<div class="col-md-12">
+										Infected:<span t-field="o.infected"/> <span t-esc="o.set_total_infected()"/>
+									</div>
+								</div>
+								<div class="row mt8">
+									<div class="col-md-12">
+										Recovered:<span t-field="o.infected"/> <span t-esc="o.set_total_recovered()"/>
+									</div>
+								</div>
+								<div class="row mt8">
+									<div class="col-md-12">
+										Deseaced:<span t-field="o.infected"/> <span t-esc="o.set_total_deseaced()"/>
+									</div>
+								</div> 
+								<div class="row mt8">
+									<div class="col-md-12" aling="center">
+										Total acomulados 
+									</div>
+								</div>
+								<div class="row mt8">
+									<div class="col-md-12">
+										Infected:<span t-field="o.infected"/> <span t-esc="o.total_infected"/>
+									</div>
+								</div>
+								<div class="row mt8">
+									<div class="col-md-12">
+										Recovered:<span t-field="o.infected"/> <span t-esc="o.total_recovered"/>
+									</div>
+								</div>
+								<div class="row mt8">
+									<div class="col-md-12">
+										Deseaced:<span t-field="o.infected"/> <span t-esc="o.total_deseaced"/>
+									</div>
+								</div> 
+							</div>
+						</t>
+					</t>
+				</t>
+			</template>
+	</data>
+</odoo>

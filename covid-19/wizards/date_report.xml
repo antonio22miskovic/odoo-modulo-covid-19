@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_data_report_wizard" model="ir.ui.view">
+			<field name="name"> Report Between Date </field>
+			<field name="model">covid.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Invoci sale Order">
+					<p> Generate  PDF Format report between a data and country </p>
+					<group>
+						<field name="start_date"/>
+						<field name="end_date"/>
+					</group>
+					<separator string="Countries"/>
+					<field name="country_ids"/>
+					<footer>
+						<button 
+							name="print_report"
+							string="Print Report"
+							type="object"
+							class="btn-primary"/>
+						<button 
+							string="Cancel"
+							class="bt-secondary"
+							special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+		<record id="action_view_date_report_wizard" model="ir.actions.act_window">
+			<field name="name">Report Between Date</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">covid.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		<menuitem 
+			name="Report Between Date"
+			id="date_report_wizard_menu"
+			parent="covid_covid_19_menu_root"
+			action="action_view_date_report_wizard"
+		 />
+	</data>
+</odoo>

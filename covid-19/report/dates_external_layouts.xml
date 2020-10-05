@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<report 
+			id="covid-19.report_DateReportExternallayout"
+			string="Date External Report"
+			model="covid.wizard"
+			report_type="qweb-pdf"
+			name="covid-19.datesReportExternalayout"
+			file="covid-19.datesReportExternalayout"
+			menu="False"
+			print_report_name="'Report %s %s of the covid-19' % (object.date,object.country_id.name) "
+			/>
+			<template id="covid-19.datesReportExternalayout">
+				<t t-call="web.html_container">
+					<t t-call="web.external_layout">
+						<div class="page" style="font-size:18px">
+							<div class="row">
+								<div class="col-md-12" alingn="center">
+									<h2>Report Cvid-19
+									</h2>
+									<h4>De: <t t-esc="start_date"></t> hasta: <t t-esc="end_date"></t></h4>
+									<table class="table mt16">
+										<thead class="thead-dark">
+											<tr>
+												<th scope="col">Source</th>
+												<th scope="col">Country</th>
+												<th scope="col">Infected</th>
+												<th scope="col">Recovered</th>
+												<th scope="col">Deseaced</th>
+											</tr>
+										</thead>
+										<tbody>
+											<t t-foreach="CovidRecords" t-as="record">
+												<tr>
+													<td>
+														<t t-esc="record['source']" />
+													</td>
+													<td>
+														<t t-esc="record['country_id'][1]" />
+													</td>
+													<td>
+														<t t-esc="record['infected']" />
+													</td>
+													<td>
+														<t t-esc="record['recovered']" />
+													</td>
+													<td>
+														<t t-esc="record['deseaced']" />
+													</td>
+												</tr>
+											</t>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							
+						</div>
+					</t>
+				</t>
+			</template>
+	</data>
+</odoo>
